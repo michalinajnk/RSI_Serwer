@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: SerwerRPC
+Class-Path: xmlrpc-1.2-b1.jar
+
