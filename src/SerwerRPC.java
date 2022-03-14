@@ -4,8 +4,9 @@ import org.apache.xmlrpc.WebServer;
 public class SerwerRPC {
     public static void main(String [] args){
        try{
+           MyData.info();
            System.out.println("Startuje serwer XML-RPC...");
-           int port= 10005;
+           int port= 10004;
            WebServer server= new WebServer(port);
 
            server.addHandler("MojSerwer", new SerwerRPC());
@@ -35,7 +36,7 @@ public class SerwerRPC {
 
     }
     public Integer echo(int x, int y){
-        return new Integer(x+y);
+        return Integer.valueOf(x+y);
     }
 
 

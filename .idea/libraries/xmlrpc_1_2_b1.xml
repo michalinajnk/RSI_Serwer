@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="xmlrpc-1.2-b1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../xmlrpc-1.2-b1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../RSI_Klient/out/artifacts/Klient/xmlrpc-1.2-b1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
