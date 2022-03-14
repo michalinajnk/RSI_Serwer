@@ -2,9 +2,10 @@
   <artifact name="Serwer">
     <output-path>$PROJECT_DIR$/out/artifacts/Serwer</output-path>
     <root id="root">
-      <element id="archive" name="xmlrpcserwer.jar">
+      <element id="archive" name="Serwer.jar">
         <element id="module-output" name="xmlrpcserwer" />
       </element>
+      <element id="library" level="project" name="xmlrpc-1.2-b1" />
     </root>
   </artifact>
 </component>
