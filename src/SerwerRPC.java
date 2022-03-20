@@ -38,6 +38,12 @@ public class SerwerRPC {
     public Integer echo(int x, int y){
         return Integer.valueOf(x+y);
     }
+    
+     public String handleTask(String sign, String status, double priority, int numberOfTask) {
+        return  numberOfTask + ". The task: " + sign + "'  has the priority of " + priority + " and " + status;
+    }
+    
+    
 
 
 }
