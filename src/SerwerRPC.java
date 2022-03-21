@@ -1,6 +1,7 @@
 
 import org.apache.xmlrpc.WebServer;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class SerwerRPC {
@@ -37,12 +38,13 @@ public class SerwerRPC {
         System.out.println(distance( -33.9,18.4, 52.2,21.0 )); //SZEROKOSC, DŁUGOSC
 
         System.out.println("Liczby pierwsze z przedziału: 1 9");
-        int[] pr = myPrimes(100,300);
-        System.out.println("ilosc: "+pr[0]+" najwieksza: "+pr[1]);
+        //ArrayList pr = myPrimes(100,300);
+        //System.out.println("ilosc: "+pr.get(0)+" najwieksza: "+pr.get(1));
+        System.out.println(myPrimes(100,4000));
 
     }
 
-    public static int[] myPrimes(int min, int max){
+    public static String myPrimes(int min, int max){
         LinkedList<Integer> primes = new LinkedList<>();
         if(max>=2) primes.add(2);
         int count = min>2?0:1;
@@ -61,7 +63,11 @@ public class SerwerRPC {
         }
         /*System.out.println(count);
         System.out.println(primes.getLast());*/
-        return new int[]{count,primes.getLast()};
+        /*ArrayList<Integer> result = new ArrayList<>();
+        result.add(count);
+        result.add(primes.getLast());
+        return result;*/
+        return count+","+primes.getLast();
         //sieve algorithm fails to address higher values
         /*max++;
         boolean[] bool = new boolean[max+1];
