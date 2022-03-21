@@ -37,11 +37,12 @@ public class SerwerRPC {
         System.out.println(distance( -33.9,18.4, 52.2,21.0 )); //SZEROKOSC, DŁUGOSC
 
         System.out.println("Liczby pierwsze z przedziału: 1 9");
-        myPrimes(100,300);
+        int[] pr = myPrimes(100,300);
+        System.out.println("ilosc: "+pr[0]+" najwieksza: "+pr[1]);
 
     }
 
-    public static void myPrimes(int min, int max){
+    public static int[] myPrimes(int min, int max){
         LinkedList<Integer> primes = new LinkedList<>();
         if(max>=2) primes.add(2);
         int count = min>2?0:1;
@@ -58,8 +59,9 @@ public class SerwerRPC {
                 if(ii>=min) count++;
             }
         }
-        System.out.println(count);
-        System.out.println(primes.getLast());
+        /*System.out.println(count);
+        System.out.println(primes.getLast());*/
+        return new int[]{count,primes.getLast()};
         //sieve algorithm fails to address higher values
         /*max++;
         boolean[] bool = new boolean[max+1];
@@ -90,7 +92,7 @@ public class SerwerRPC {
         return 2*EARTH_RADIUS * Math.asin(Math.sqrt(sinsqhd(deg2rad(lat1),deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * sinsqhd(deg2rad(lon1),deg2rad(lon2))));
     }
 
-    public String info() {
+    public String show() {
         return "myPrimes(int,int) - int[]\n" +
                 "calculates the number of primes in the given range (min, max) and the highest of them (returns 0 if none)\n" +
                 "distance(double,double,double,double) - double\n" +
