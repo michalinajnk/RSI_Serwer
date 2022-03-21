@@ -17,6 +17,7 @@ public class SerwerRPC {
            System.out.println("Nasluchuje na porcie: " + port);
            System.out.println("Aby zatrzymac serwer nacisnij ctrl+c");
 
+           testOfMethods();
 
 
        } catch(Exception exception){
@@ -25,7 +26,24 @@ public class SerwerRPC {
 
     }
 
-    public int[] myPrimes(int min, int max){
+    public static void testOfMethods(){
+
+        System.out.println("Odległość między Krakowem a Wrocławiem");
+        System.out.println(distance( 51.1,17.03, 50.0,19.9 )); //SZEROKOSC, DŁUGOSC
+
+        System.out.println("Odległość między Kapsztadem a Warszawą");
+        System.out.println(distance( -33.9,18.4, 52.2,21.0 )); //SZEROKOSC, DŁUGOSC
+
+        System.out.println("Liczby pierwsze z przedziału: 1 9");
+        for(Integer prime: myPrimes(10000000,20000000)){
+        System.out.println(prime);
+        } //ILOSC PIERWSZYCH, NAJWYZSZA
+
+
+
+    }
+
+    public static int[] myPrimes(int min, int max){
         max++;
         boolean[] bool = new boolean[max+1];
         int count = min>2?0:1;
@@ -51,8 +69,8 @@ public class SerwerRPC {
         return new int[]{count,highest};
     }
 
-    public double distance(double lat1, double lon1, double lat2, double lon2){
-        return 2*EARTH_RADIUS * Math.asin(Math.sqrt(sinsqhd(lat1,lat2) + Math.cos(lat1) * Math.cos(lat2) * sinsqhd(lon1,lon2)));
+    public static double distance(double lat1, double lon1, double lat2, double lon2){
+        return 2*EARTH_RADIUS * Math.asin(Math.sqrt(sinsqhd(deg2rad(lat1),deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * sinsqhd(deg2rad(lon1),deg2rad(lon2))));
     }
 
     public String info() {
@@ -86,11 +104,22 @@ public class SerwerRPC {
         return  numberOfTask + ". The task: " + sign + "'  has the priority of " + priority + " and " + status;
     }
 
+
+
     /**
      * Calculates square of sine of half of difference between arguments
      */
-    private double sinsqhd(double v1,double v2){
+    private static double sinsqhd(double v1,double v2){
         double r = Math.sin((v1-v2)/2);
         return r*r;
+    }
+
+    /* The function to convert decimal into radians */
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+    /* The function to convert radians into decimal */
+    private static  double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
 }
