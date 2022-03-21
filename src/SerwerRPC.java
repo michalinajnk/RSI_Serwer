@@ -60,8 +60,8 @@ public class SerwerRPC {
                 "calculates the number of primes in the given range (min, max) and the highest of them (returns 0 if none)" +
                 "distance(double,double,double,double) - double\n" +
                 "given the latitudes and longitudes for two points on Earth (lat1,lon1, lat2,lon2) calculates the distance between them\n" +
-                "" +
-                "" +
+                "handleTask(String, String, double, int) - String" +
+                "it returns the information about the task, its priority, status and number" +
                 "info() - String" +
                 "returns this text";
     }
