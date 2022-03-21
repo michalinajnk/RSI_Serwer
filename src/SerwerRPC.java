@@ -1,6 +1,8 @@
 
 import org.apache.xmlrpc.WebServer;
 
+import java.util.LinkedList;
+
 public class SerwerRPC {
     private static int EARTH_RADIUS = 6371;
 
@@ -35,16 +37,31 @@ public class SerwerRPC {
         System.out.println(distance( -33.9,18.4, 52.2,21.0 )); //SZEROKOSC, DŁUGOSC
 
         System.out.println("Liczby pierwsze z przedziału: 1 9");
-        for(Integer prime: myPrimes(10000000,20000000)){
-        System.out.println(prime);
-        } //ILOSC PIERWSZYCH, NAJWYZSZA
-
-
+        myPrimes(100,300);
 
     }
 
-    public static int[] myPrimes(int min, int max){
-        max++;
+    public static void myPrimes(int min, int max){
+        LinkedList<Integer> primes = new LinkedList<>();
+        if(max>=2) primes.add(2);
+        int count = min>2?0:1;
+        for(int ii=3;ii<=max;ii+=2){
+            boolean isPrime = true;
+            for(Integer prime:primes){
+                if(ii%prime==0){
+                    isPrime = false;
+                    break;
+                }
+            }
+            if(isPrime){
+                primes.add(ii);
+                if(ii>=min) count++;
+            }
+        }
+        System.out.println(count);
+        System.out.println(primes.getLast());
+        //sieve algorithm fails to address higher values
+        /*max++;
         boolean[] bool = new boolean[max+1];
         int count = min>2?0:1;
         bool[2] = true;
@@ -66,7 +83,7 @@ public class SerwerRPC {
                 break;
             }
         }
-        return new int[]{count,highest};
+        return new int[]{count,highest};*/
     }
 
     public static double distance(double lat1, double lon1, double lat2, double lon2){
@@ -75,29 +92,13 @@ public class SerwerRPC {
 
     public String info() {
         return "myPrimes(int,int) - int[]\n" +
-                "calculates the number of primes in the given range (min, max) and the highest of them (returns 0 if none)" +
+                "calculates the number of primes in the given range (min, max) and the highest of them (returns 0 if none)\n" +
                 "distance(double,double,double,double) - double\n" +
                 "given the latitudes and longitudes for two points on Earth (lat1,lon1, lat2,lon2) calculates the distance between them\n" +
-                "handleTask(String, String, double, int) - String" +
-                "it returns the information about the task, its priority, status and number" +
-                "info() - String" +
+                "handleTask(String, String, double, int) - String\n" +
+                "returns the information about the task, its priority, status and number\n" +
+                "info() - String\n" +
                 "returns this text";
-    }
-
-    public int execAsy(int x){
-        System.out.println("...wywolano asy -odliczam");
-        try{
-            Thread.sleep(x);
-        } catch(InterruptedException e){
-            e.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
-        System.out.println("...asy - koniec odliczania");
-        return(123);
-
-    }
-    public Integer echo(int x, int y){
-        return Integer.valueOf(x+y);
     }
     
     public String handleTask(String sign, String status, double priority, int numberOfTask) {
