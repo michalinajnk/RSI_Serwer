@@ -22,7 +22,7 @@ public class MyServer {
             CalcObjectImpl implObiektu = new CalcObjectImpl();
             java.rmi.Naming.rebind(args[0], implObiektu);
             //-- pkt 5
-            CalcObjectImpl implObiektu2 = new CalcObjectImpl();
+            CalcObjectImpl2 implObiektu2 = new CalcObjectImpl2();
             java.rmi.Naming.rebind(args[1], implObiektu2);
             //--END
             System.out.println("Server is registered now :-)");
