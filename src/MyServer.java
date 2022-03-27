@@ -4,7 +4,7 @@ import java.rmi.registry.Registry;
 
 public class MyServer {
     public static void main(String[] args) {
-        if (args.length == 0) {
+        if (args.length < 2) {
             System.out.println("You have to enter RMI object address in the form: //host_address/service_name");
             return;
         }
@@ -21,6 +21,10 @@ public class MyServer {
         try {
             CalcObjectImpl implObiektu = new CalcObjectImpl();
             java.rmi.Naming.rebind(args[0], implObiektu);
+            //-- pkt 5
+            CalcObjectImpl implObiektu2 = new CalcObjectImpl();
+            java.rmi.Naming.rebind(args[1], implObiektu2);
+            //--END
             System.out.println("Server is registered now :-)");
             System.out.println("Press Crl+C to stop...");
         } catch (Exception e) {
