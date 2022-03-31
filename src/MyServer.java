@@ -1,9 +1,11 @@
+import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class MyServer {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
+        MyData.info();
         if (args.length < 2) {
             System.out.println("You have to enter RMI object address in the form: //host_address/service_name");
             return;
