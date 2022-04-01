@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="compute">
+    <output-path>$PROJECT_DIR$/out/artifacts/compute</output-path>
+    <root id="archive" name="compute.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/compute.jar" />
+    </root>
+  </artifact>
+</component>
